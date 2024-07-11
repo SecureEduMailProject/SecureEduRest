@@ -35,6 +35,7 @@ export default async function registerHandler(request: CustomRequest, reply: Fas
         .setEmail(email)
         .setUsername(username)
         .setPassword(hashedPassword)
+        .setCreatedAt(new Date())
 
     await newUser.saveUser(request.mikroORM.orm.em as EntityManager)
 
