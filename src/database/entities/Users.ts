@@ -11,6 +11,15 @@ export class Users {
     @Property({type: "text", unique: true})
     username!: string;
 
+    @Property({type: "text", unique: true})
+    email!: string;
+
+    @Property({type: "text"})
+    password!: string;
+
+    @Property({type: "boolean", nullable: true})
+    administrator!: boolean;
+
     async saveUser(em: EntityManager) {
         try {
             await em.persistAndFlush(this);
