@@ -1,6 +1,7 @@
 import {Entity, PrimaryKey, Property} from "@mikro-orm/core";
 import {EntityManager} from "@mikro-orm/core";
 import {Logger} from "../../utils/Logger";
+import {Random} from "../../utils/Random";
 
 @Entity({tableName: "users"})
 export class Users {
@@ -9,7 +10,7 @@ export class Users {
     id!: number;
 
     @Property({type: "text", unique: true})
-    token!: string;
+    token: string = Random.generateId();
 
     @Property({type: "text", unique: true})
     username!: string;
