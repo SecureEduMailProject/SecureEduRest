@@ -19,6 +19,7 @@
     "@mikro-orm/mariadb": "^5.9.8",
     "@mikro-orm/mongodb": "5.9.8",
     "@mikro-orm/mysql": "5.9.8",
+    "bcrypt": "^5.1.1",
     "dotenv": "^16.4.5",
     "fastify": "^4.28.1",
     "fastify-mikro-orm": "^4.0.0",
@@ -27,6 +28,7 @@
     "typeorm": "^0.3.20"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
     "@types/fastify-cors": "^2.1.0",
     "@types/node": "^20.14.10",
     "ts-node": "^10.9.2",

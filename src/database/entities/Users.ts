@@ -45,6 +45,37 @@ export class Users {
         return this.administrator;
     }
 
+    getPassword() {
+        return this.password;
+    }
+
+///////////////////////////////////////////////////////////////////////
+
+    setUsername(username: string) {
+        this.username = username;
+        return this;
+    }
+
+    setEmail(email: string) {
+        this.email = email;
+        return this;
+    }
+
+    setCreatedAt(createdAt: Date) {
+        this.createdAt = createdAt;
+        return this;
+    }
+
+    setAdministrator(administrator: boolean) {
+        this.administrator = administrator;
+        return this;
+    }
+
+    setPassword(password: string) {
+        this.password = password;
+        return this;
+    }
+
 ///////////////////////////////////////////////////////////////////////
 
     async saveUser(em: EntityManager) {
