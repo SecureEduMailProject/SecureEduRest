@@ -9,6 +9,9 @@ export class Users {
     id!: number;
 
     @Property({type: "text", unique: true})
+    token!: string;
+
+    @Property({type: "text", unique: true})
     username!: string;
 
     @Property({type: "text", unique: true})
@@ -19,6 +22,29 @@ export class Users {
 
     @Property({type: "boolean", nullable: true})
     administrator!: boolean;
+
+    @Property({type: "date"})
+    createdAt!: Date;
+
+///////////////////////////////////////////////////////////////////////
+
+    getUsername() {
+        return this.username;
+    }
+
+    getEmail() {
+        return this.email;
+    }
+
+    getCreatedAt() {
+        return this.createdAt;
+    }
+
+    getAdministrator() {
+        return this.administrator;
+    }
+
+///////////////////////////////////////////////////////////////////////
 
     async saveUser(em: EntityManager) {
         try {

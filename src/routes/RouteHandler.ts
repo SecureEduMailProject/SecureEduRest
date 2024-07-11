@@ -6,7 +6,7 @@ import { FastifyInstance, RouteOptions } from "fastify";
 import { getAllFilesRecursive } from "../utils/FileUtil";
 import { Logger } from "../utils/Logger";
 
-interface RouteProperties {
+export interface RouteProperties {
     routeOptions: RouteOptions;
     enabled: boolean;
 }
