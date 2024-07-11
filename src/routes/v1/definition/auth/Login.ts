@@ -13,7 +13,7 @@ const schema: FastifySchema = {
     body: {
         type: 'object',
         properties: {
-            username: {
+            identifier: {
                 type: 'string'
             },
             password: {
