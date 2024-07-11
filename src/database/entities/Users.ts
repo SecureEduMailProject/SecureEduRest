@@ -76,6 +76,10 @@ export class Users {
         return this;
     }
 
+    getToken() {
+        return this.token;
+    }
+
 ///////////////////////////////////////////////////////////////////////
 
     async saveUser(em: EntityManager) {

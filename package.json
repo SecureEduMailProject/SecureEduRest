@@ -23,6 +23,7 @@
     "dotenv": "^16.4.5",
     "fastify": "^4.28.1",
     "fastify-mikro-orm": "^4.0.0",
+    "jsonwebtoken": "^9.0.2",
     "reflect-metadata": "^0.2.2",
     "swagger-ui": "^5.17.14",
     "typeorm": "^0.3.20"
@@ -30,6 +31,7 @@
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
     "@types/fastify-cors": "^2.1.0",
+    "@types/jsonwebtoken": "^9.0.6",
     "@types/node": "^20.14.10",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.3"
