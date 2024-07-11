@@ -7,6 +7,7 @@ Customize the body and response schema
  */
 const schema: FastifySchema = {
     description: "Récupération des informations d'un utilisateur",
+    tags: ['Account'],
     params: {
         type: 'object',
         properties: {

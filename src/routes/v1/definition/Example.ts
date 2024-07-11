@@ -7,6 +7,7 @@ Customize the body and response schema
  */
 const schema: FastifySchema = {
     description: "Example route",
+    tags: ['Exemple'],
     response: {
         200: {
             type: 'object',
