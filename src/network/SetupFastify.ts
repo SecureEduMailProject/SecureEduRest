@@ -33,7 +33,7 @@ export default async (app: FastifyInstance) => {
   // Configuration CORS
   app.register(fastifyCors, {
     origin: '*',
-    methods: 'GET,PUT,PATCH,POST,DELETE,SUSPEND',
+    methods: 'GET,PATCH,POST,DELETE,SUSPEND',
   });
 
   // Configuration Swagger
