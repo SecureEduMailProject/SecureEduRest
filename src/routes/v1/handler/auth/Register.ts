@@ -11,7 +11,7 @@ import {EntityManager} from "@mikro-orm/mariadb";
  *
  */
 export default async function registerHandler(request: CustomRequest, reply: FastifyReply) {
-    const {email, username, password} = request.body
+    const {email, username, password, SecureUIDMail} = request.body
 
     if (!emailRegex.test(email)) return reply.code(400).send({
         err: true,
@@ -35,6 +35,7 @@ export default async function registerHandler(request: CustomRequest, reply: Fas
         .setEmail(email)
         .setUsername(username)
         .setPassword(hashedPassword)
+        .setSecureUIDMail(SecureUIDMail)
         .setCreatedAt(new Date())
 
     await newUser.saveUser(request.mikroORM.orm.em as EntityManager)
@@ -53,6 +54,7 @@ type CustomRequest = FastifyRequest<{
     Body: {
         email: string,
         username: string,
-        password: string
+        password: string,
+        SecureUIDMail: string
     }
 }>

@@ -26,6 +26,7 @@ export default async function getAccountInfoHandler(request: CustomRequest, repl
         user: {
             username: user.getUsername(),
             email: user.getEmail(),
+            SecureUIDMail: user.getSecureUIDMail(),
             createAt: user.getCreatedAt(),
             administrator: user.getAdministrator()
         }

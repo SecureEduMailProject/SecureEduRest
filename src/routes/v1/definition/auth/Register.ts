@@ -20,6 +20,9 @@ const schema: FastifySchema = {
             password: {
                 type: 'string'
             },
+            SecureUIDMail: {
+                type: 'string'
+            }
         }
     }
 }
