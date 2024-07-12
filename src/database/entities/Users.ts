@@ -21,6 +21,9 @@ export class Users {
     @Property({type: "text"})
     password!: string;
 
+    @Property({type: "text", unique: true})
+    SecureUIDMail!: string;
+
     @Property({type: "boolean", nullable: true})
     administrator!: boolean;
 
@@ -47,6 +50,15 @@ export class Users {
 
     getPassword() {
         return this.password;
+    }
+
+
+    getToken() {
+        return this.token;
+    }
+
+    getSecureUIDMail() {
+        return this.SecureUIDMail;
     }
 
 ///////////////////////////////////////////////////////////////////////
@@ -76,8 +88,14 @@ export class Users {
         return this;
     }
 
-    getToken() {
-        return this.token;
+    setToken(token: string) {
+        this.token = token;
+        return this;
+    }
+
+    setSecureUIDMail(SecureUIDMail: string) {
+        this.SecureUIDMail = SecureUIDMail;
+        return this;
     }
 
 ///////////////////////////////////////////////////////////////////////
