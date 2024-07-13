@@ -1,19 +1,19 @@
 import {FastifyReply, FastifyRequest, FastifySchema} from "fastify";
 import {RouteProperties} from "../../../RouteHandler";
-import getMailInfoHandler from "../../handler/mail/getMailToken";
+import getSenderMailHandler from "../../handler/mail/getSenderMailToken";
 
 /*
 Customize the body and response schema
  */
 const schema: FastifySchema = {
-    description: "Récupération des informations d'un mail",
+    description: "Récupération des informations du mail depuis l'envoyeur",
     tags: ['Mail'],
     params: {
         type: 'object',
         properties: {
             token: {
                 type: 'string',
-                description: "Token du mail"
+                description: "Token du sender"
             }
         }
     }
@@ -22,9 +22,9 @@ const schema: FastifySchema = {
 const routeProperties: RouteProperties = {
     routeOptions: {
         method: 'GET',
-        url: '/api/v1/mail/get/info/:token',
+        url: '/api/v1/mail/get/sender/:token',
         schema,
-        handler: getMailInfoHandler as (request: FastifyRequest, reply: FastifyReply) => void
+        handler: getSenderMailHandler as (request: FastifyRequest, reply: FastifyReply) => void
     },
     enabled: true
 }
