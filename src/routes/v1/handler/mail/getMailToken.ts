@@ -7,7 +7,7 @@ import { Mailer } from "../../../../database/entities/Mailer";
  * @param reply
  *
  */
-export default async function getAccountInfoHandler(request: CustomRequest, reply: FastifyReply) {
+export default async function getMailInfoHandler(request: CustomRequest, reply: FastifyReply) {
 
     const {token} = request.params
 

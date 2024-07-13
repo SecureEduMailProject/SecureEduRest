@@ -1,6 +1,6 @@
 import {FastifyReply, FastifyRequest, FastifySchema} from "fastify";
 import {RouteProperties} from "../../../RouteHandler";
-import getAccountInfoHandler from "../../handler/account/GetAccountInfo";
+import getMailInfoHandler from "../../handler/mail/getMailToken";
 
 /*
 Customize the body and response schema
@@ -24,7 +24,7 @@ const routeProperties: RouteProperties = {
         method: 'GET',
         url: '/api/v1/mail/get/info/:token',
         schema,
-        handler: getAccountInfoHandler as (request: FastifyRequest, reply: FastifyReply) => void
+        handler: getMailInfoHandler as (request: FastifyRequest, reply: FastifyReply) => void
     },
     enabled: true
 }
