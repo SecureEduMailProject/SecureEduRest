@@ -44,7 +44,8 @@ export default async function loginHandler(request: CustomRequest, reply: Fastif
 
         reply.code(200).send({
             err: false,
-            username: user.getUsername()
+            username: user.getUsername(),
+            token: user.getToken()
         });
 
     } catch (error) {
