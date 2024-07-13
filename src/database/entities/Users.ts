@@ -6,7 +6,7 @@ import {Random} from "../../utils/Random";
 @Entity({tableName: "users"})
 export class Users {
 
-    @PrimaryKey()
+    @PrimaryKey({ type: 'number', columnType: 'int', unsigned: true, autoincrement: true })
     id!: number;
 
     @Property({type: "text", unique: true})

@@ -4,12 +4,13 @@ import { FastifyInstance } from "fastify";
 import fastifyMikroOrm from "fastify-mikro-orm";
 import { Logger } from "../utils/Logger";
 import { Users } from "./entities/Users";
+import {Mailer} from "./entities/Mailer";
 
 export default async function setupDatabase(app: FastifyInstance) {
     try {
         if (!app.hasDecorator('mikroORM')) {
             await app.register(fastifyMikroOrm, {
-                entities: [Users],
+                entities: [Users, Mailer],
                 dbName: 'sandro642_secureedumail',
                 type: 'mariadb',
                 host: 'mysql-sandro642.alwaysdata.net',
