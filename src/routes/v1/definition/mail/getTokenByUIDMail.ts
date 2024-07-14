@@ -11,7 +11,7 @@ const schema: FastifySchema = {
     params: {
         type: 'object',
         properties: {
-            uidmail: {
+            uidMail: {
                 type: 'string',
                 description: "Secure Identifiant Unique Mail."
             }
@@ -22,7 +22,7 @@ const schema: FastifySchema = {
 const routeProperties: RouteProperties = {
     routeOptions: {
         method: 'GET',
-        url: '/api/v1/mail/get/token/:uidmail',
+        url: '/api/v1/mail/get/token/:uidMail',
         schema,
         handler: getTokenByUIDMailHandler as (request: FastifyRequest, reply: FastifyReply) => void
     },
