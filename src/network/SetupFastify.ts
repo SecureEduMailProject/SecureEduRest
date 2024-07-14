@@ -30,6 +30,7 @@ export default async (app: FastifyInstance) => {
     });
   });
 
+  Logger.info('Configuration des CORS')
   // Configuration CORS
   app.register(fastifyCors, {
     origin: '*',
