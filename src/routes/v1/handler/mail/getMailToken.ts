@@ -11,19 +11,19 @@ export default async function getMailInfoHandler(request: CustomRequest, reply: 
 
     const {token} = request.params
 
-    const mail = await request.mikroORM.orm.em.findOne(Mailer, {
-        token: token, // Recherche de l'utilisateur par son token
+    const mails = await request.mikroORM.orm.em.find(Mailer, {
+        token: token, // Recherche des mails par leur token
     })
 
-    if(!mail) return reply.code(400).send({
-        err: true,
-        msg: "Le mail n'existe pas."
-    })
+    if (mails.length === 0) {
+        return reply.code(400).send({
+            err: true,
+            msg: "Aucun mail trouvé."
+        })
+    }
 
-    reply.code(200).send({
-        err: false,
-        msg: "Mail trouvé. Voici les informations.",
-        user: {
+    const mailInfo = mails.map((mail, index) => ({
+        [`mail${index + 1}`]: {
             sender: mail.getSender(),
             recipient: mail.getRecipient(),
             title: mail.getTitle(),
@@ -32,6 +32,12 @@ export default async function getMailInfoHandler(request: CustomRequest, reply: 
             time: mail.getTime(),
             important: mail.isImportant()
         }
+    }));
+
+    reply.code(200).send({
+        err: false,
+        msg: "Mails trouvés. Voici les informations.",
+        mails: mailInfo
     })
 }
 
