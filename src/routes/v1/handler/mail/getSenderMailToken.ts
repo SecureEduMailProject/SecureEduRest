@@ -11,19 +11,19 @@ export default async function getSenderMailHandler(request: CustomRequest, reply
 
     const {token} = request.params
 
-    const mail = await request.mikroORM.orm.em.findOne(Mailer, {
-        sender: token, // Recherche de l'utilisateur par son token
+    const mails = await request.mikroORM.orm.em.find(Mailer, {
+        sender: token, // Recherche des mails par le token de l'expéditeur
     })
 
-    if(!mail) return reply.code(400).send({
-        err: true,
-        msg: "Vous n'avez aucun mail avec votre token"
-    })
+    if (mails.length === 0) {
+        return reply.code(400).send({
+            err: true,
+            msg: "Vous n'avez aucun mail avec votre token."
+        })
+    }
 
-    reply.code(200).send({
-        err: false,
-        msg: "Mail trouvé. Voici les informations.",
-        user: {
+    const mailInfo = mails.map((mail, index) => ({
+        [`mail${index + 1}`]: {
             sender: mail.getSender(),
             recipient: mail.getRecipient(),
             title: mail.getTitle(),
@@ -32,6 +32,12 @@ export default async function getSenderMailHandler(request: CustomRequest, reply
             time: mail.getTime(),
             important: mail.isImportant()
         }
+    }));
+
+    reply.code(200).send({
+        err: false,
+        msg: "Mails trouvés. Voici les informations.",
+        mails: mailInfo
     })
 }
 
