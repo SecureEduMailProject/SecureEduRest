@@ -15,7 +15,7 @@ export default async function registerHandler(request: CustomRequest, reply: Fas
 
     if (!emailRegex.test(email)) return reply.code(400).send({
         err: true,
-        msg: "L'adresse e-mail que vous avez entré est incorrecte.",
+        msg: "L'adresse e-mail que vous avez entrée est incorrecte.",
         status: 400
     })
 
@@ -25,7 +25,7 @@ export default async function registerHandler(request: CustomRequest, reply: Fas
 
     if (user) return reply.code(400).send({
         err: true,
-        msg: "L'adresse e-mail que vous avez entré est déjà utilisée.",
+        msg: "L'adresse e-mail que vous avez entrée est déjà utilisée.",
         status: 400
     })
 
