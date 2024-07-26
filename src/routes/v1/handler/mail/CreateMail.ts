@@ -1,7 +1,8 @@
 import { FastifyReply, FastifyRequest } from "fastify";
 import { EntityManager } from "@mikro-orm/mariadb";
 import { Mailer } from "../../../../database/entities/Mailer";
-import { Users } from "../../../../database/entities/Users";  // Supposons que User est l'entité représentant les utilisateurs
+import { Users } from "../../../../database/entities/Users";
+import {genSaltSync, hashSync} from "bcrypt";  // Supposons que User est l'entité représentant les utilisateurs
 
 /**
  *
@@ -33,9 +34,13 @@ export default async function createMailHandler(request: CustomRequest, reply: F
             });
         }
 
+        const hashedSender = hashSync(sender, genSaltSync(10))
+        const hashedRecipient = hashSync(recipient, genSaltSync(10))
+
+
         const newMail = new Mailer();
-        newMail.setSender(sender);
-        newMail.setRecipient(recipient);
+        newMail.setSender(hashedSender);
+        newMail.setRecipient(hashedRecipient);
         newMail.setTitle(title);
         newMail.setDescription(description);
         newMail.setContent(content)
