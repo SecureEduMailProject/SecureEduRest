@@ -34,13 +34,10 @@ export default async function createMailHandler(request: CustomRequest, reply: F
             });
         }
 
-        const hashedSender = hashSync(sender, genSaltSync(10))
-        const hashedRecipient = hashSync(recipient, genSaltSync(10))
-
 
         const newMail = new Mailer();
-        newMail.setSender(hashedSender);
-        newMail.setRecipient(hashedRecipient);
+        newMail.setSender(sender);
+        newMail.setRecipient(recipient);
         newMail.setTitle(title);
         newMail.setDescription(description);
         newMail.setContent(content)
