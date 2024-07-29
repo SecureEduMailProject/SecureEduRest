@@ -2,7 +2,9 @@ import { FastifyReply, FastifyRequest } from "fastify";
 import { EntityManager } from "@mikro-orm/mariadb";
 import { Mailer } from "../../../../database/entities/Mailer";
 import { Users } from "../../../../database/entities/Users";
-import {genSaltSync, hashSync} from "bcrypt";  // Supposons que User est l'entité représentant les utilisateurs
+import { SecureEduCryptAlgorithm } from "secureeducrypt";
+
+const service = new SecureEduCryptAlgorithm()
 
 /**
  *
@@ -34,10 +36,13 @@ export default async function createMailHandler(request: CustomRequest, reply: F
             });
         }
 
+        const encryptedSender = service.encrypt(sender)
+        const encryptedRecipient = service.encrypt(recipient)
+
 
         const newMail = new Mailer();
-        newMail.setSender(sender);
-        newMail.setRecipient(recipient);
+        newMail.setSender(encryptedSender);
+        newMail.setRecipient(encryptedRecipient);
         newMail.setTitle(title);
         newMail.setDescription(description);
         newMail.setContent(content)

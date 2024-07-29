@@ -41,6 +41,9 @@ dependencies:
   reflect-metadata:
     specifier: ^0.2.2
     version: 0.2.2
+  secureeducrypt:
+    specifier: ^1.0.0
+    version: 1.0.0
   swagger-ui:
     specifier: ^5.17.14
     version: 5.17.14(ramda@0.30.1)
@@ -2381,6 +2384,7 @@ packages:
 
   /isexe@2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
+    requiresBuild: true
     dev: false
 
   /jackspeak@3.4.3:
@@ -3715,6 +3719,10 @@ packages:
 
   /secure-json-parse@2.7.0:
     resolution: {integrity: sha512-6aU+Rwsezw7VR8/nyvKTx8QpWH9FrcYiXXlqC4z5d5XQBDRqtbfsRjnwGyqbi3gddNtWHuEk9OANUotL26qKUw==}
+    dev: false
+
+  /secureeducrypt@1.0.0:
+    resolution: {integrity: sha512-c4sHUlX9bRUpdlUU+R9Me+8+fDMABef2PrbZKrNALhG2oBLd65/Q0FGEpRe2L+HxsUNtgFxq2G+t9Xb1awB4yw==}
     dev: false
 
   /semver-compare@1.0.0:
