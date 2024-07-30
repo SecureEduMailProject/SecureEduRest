@@ -1,5 +1,8 @@
 import {FastifyReply, FastifyRequest} from "fastify";
 import { Mailer } from "../../../../database/entities/Mailer";
+import { SecureEduCryptAlgorithm } from "secureeducrypt";
+
+const service = new SecureEduCryptAlgorithm()
 
 /**
  *
@@ -22,10 +25,12 @@ export default async function getSenderMailHandler(request: CustomRequest, reply
         })
     }
 
+
+
     const mailInfo = mails.map((mail, index) => ({
         [`mail${index + 1}`]: {
-            sender: mail.getSender(),
-            recipient: mail.getRecipient(),
+            sender: service.decrypt(mail.getRecipient()),
+            recipient: service.decrypt(mail.getRecipient()),
             title: mail.getTitle(),
             description: mail.getDescription(),
             content: mail.getContent(),
