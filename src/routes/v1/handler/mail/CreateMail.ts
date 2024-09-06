@@ -41,8 +41,8 @@ export default async function createMailHandler(request: CustomRequest, reply: F
 
 
         const newMail = new Mailer();
-        newMail.setSender(encryptedSender);
-        newMail.setRecipient(encryptedRecipient);
+        newMail.setSender(sender);
+        newMail.setRecipient(recipient);
         newMail.setTitle(title);
         newMail.setDescription(description);
         newMail.setContent(content)
