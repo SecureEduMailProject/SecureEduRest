@@ -18,7 +18,7 @@ const app: FastifyInstance = fastify({
 async function startApp() {
     try {
         // Setup de la base de données
-        await setupDatabase(app);
+        // await setupDatabase(app);
 
         // Setup du serveur Fastify
         await fastifySetup(app);
