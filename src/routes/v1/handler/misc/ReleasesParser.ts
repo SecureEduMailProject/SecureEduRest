@@ -70,6 +70,10 @@ export default async function getReleasesHandler(request: FastifyRequest, reply:
     reply.code(200).send({ entries: sortedEntries });
   } catch (error) {
     console.error('Error:', error); // Log the error
-    reply.code(500).send({ error: 'Failed to fetch or parse one or more Atom feeds' });
+
+    reply.code(500).send({
+      err: false,
+      msg: "Failed to fetch or parse one or more Atom feeds",
+    });
   }
 }
