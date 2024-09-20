@@ -13,7 +13,7 @@ export default async function getReleasesHandler(request: FastifyRequest, reply:
   try {
     // Fetch the Atom feed
     const { data: xmlData } = await axios.get('https://github.com/secureedumailproject/secureedumail/releases.atom');
-    
+
     // Parse XML to JSON
     const parser = new XMLParser();
     const result = parser.parse(xmlData);
@@ -23,8 +23,11 @@ export default async function getReleasesHandler(request: FastifyRequest, reply:
       throw new Error('Unexpected XML structure');
     }
 
+    // Ensure entries is always an array (handles both single and multiple entries)
+    const entriesData = Array.isArray(result.feed.entry) ? result.feed.entry : [result.feed.entry];
+
     // Extract entries
-    const entries = result.feed.entry.map((entry: any) => {
+    const entries = entriesData.map((entry: any) => {
       // Convert HTML content to text
       const contentText = htmlToText(entry.content || '', {
         wordwrap: 130
@@ -36,6 +39,7 @@ export default async function getReleasesHandler(request: FastifyRequest, reply:
       const versionMatch = contentText.match(/Version:\s*([\w.]+)/);
       const tagMatch = contentText.match(/Tag:\s*(\w+)/);
       const nameMatch = contentText.match(/Name:\s*'([^']+)'/);
+      const typeMatch = contentText.match(/Type:\s*'([^']+)'/);  // Extraction du champ Type
       const downloadLinkMatch = contentText.match(/Download Link:\s*'(https:\/\/[^']+)'/);
       const githubLinkMatch = contentText.match(/GitHub\n\[(https:\/\/[^]]+)\]/);
 
@@ -45,6 +49,7 @@ export default async function getReleasesHandler(request: FastifyRequest, reply:
         version: versionMatch ? versionMatch[1] : 'Unknown',
         tag: tagMatch ? tagMatch[1] : 'Unknown',
         name: nameMatch ? nameMatch[1] : 'Unknown',
+        type: typeMatch ? typeMatch[1] : 'Unknown',  // Ajout du champ Type
         downloadLink: downloadLinkMatch ? downloadLinkMatch[1] : 'No link found',
         githubLink: githubLinkMatch ? githubLinkMatch[1] : 'No link found',
       };
