@@ -2,7 +2,7 @@
   "name": "SecureEduRest",
   "version": "1.0.0",
   "description": "API Rest officiel de SecureEduMail",
-  "main": "index.js",
+  "main": "src/SecureEduRest.ts",
   "scripts": {
     "start": "ts-node src/SecureEduRest",
     "dev": "ts-node src/SecureEduRest --dev",
