@@ -1,8 +1,0 @@
-[build]
-command = "pnpm start"
-publish = "public"  # Update this if your static files are elsewhere
-
-[[redirects]]
-from = "/"
-to = "/docs"
-status = 200
