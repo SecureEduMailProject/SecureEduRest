@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "API Rest officiel de SecureEduMail",
   "main": "src/SecureEduRest.ts",
-  "type": "module",  // Add this line
+  "type": "module",
   "scripts": {
     "start": "ts-node src/SecureEduRest",
     "dev": "ts-node src/SecureEduRest --dev",
